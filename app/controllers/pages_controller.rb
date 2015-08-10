@@ -25,9 +25,13 @@ def create
 end
 
 def edit
+  @page = find_page_by_full_path(params[:path])
 end
 
 def update
+  @page = find_page_by_full_path(params[:path])
+  @page.update_attributes(page_params)
+  redirect_to page_path(@page)
 end
 
 def destroy

@@ -1,4 +1,4 @@
-%h1 Editin page
+%h1 Creating new page
 = form_for :page do |f|
   name
   = f.text_field :name
@@ -8,4 +8,4 @@
   %p
   text
   = f.text_area :content
-  %p= f.submit "Edit page"
+  %p= f.submit "Create page"

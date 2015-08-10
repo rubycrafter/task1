@@ -60,4 +60,5 @@ Rails.application.routes.draw do
 
   post '/add',       to: 'pages#create'
   post '/*path/add', to: 'pages#create'
+  post '/*path/edit',to: 'pages#update'
 end

@@ -1,3 +1,7 @@
-%h1= @page.name
-%p= @page.head
+%h1= @page.head
 %p= @page.content
+
+
+= show_tree(@page)
+
+= link_to "Create new page", page_path(@page)+'/add'
