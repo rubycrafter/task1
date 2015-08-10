@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+helper_method :page_path
 
 def index
 end
@@ -14,6 +15,7 @@ end
 def create
   @page = Page.new(page_params)
   @page.suprapage = Page.find_by name: parse_page_name(params[:path]).last
+  @page.suprapage ||= Page.first
   # Here should be root page existance validation throu exception
   if @page.save
     redirect_to page_path(@page)
@@ -37,7 +39,7 @@ def page_params
 end
 
 def page_path(page)
-  if page.suprapage.nil?
+  if page.suprapage.id == Page.first.id
     return "/"+page.name
   else
     return page_path(page.suprapage)+"/"+page.name
@@ -45,6 +47,7 @@ def page_path(page)
 end
 
 def parse_page_name(path)
+  path ||= ""
   pages_array = path.split("/")
 
   # Here should be some validatios
@@ -61,5 +64,6 @@ def find_page_by_full_path(name)
   return page
 
 end
+
 
 end

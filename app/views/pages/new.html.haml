@@ -1,6 +1,11 @@
 %h1 Creating new page
 = form_for :page do |f|
-  %p= f.text_field :name
-  %p= f.text_field :head
-  %p= f.text_field :content
+  name
+  = f.text_field :name
+  %p
+  head
+  = f.text_field :head
+  %p
+  text
+  = f.text_area :content
   %p= f.submit "Create page"
