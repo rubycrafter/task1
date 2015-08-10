@@ -4,4 +4,6 @@
 
 = show_tree(@page)
 
-= link_to "Create new page", page_path(@page)+'/add'
+%p= link_to "Create new page", page_path(@page)+'/add'
+
+%p= link_to "Edit this page", page_path(@page)+'/edit'

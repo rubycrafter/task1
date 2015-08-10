@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150807111618) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "pages", ["name"], name: "index_pages_on_name"
   add_index "pages", ["suprapage_id"], name: "index_pages_on_suprapage_id"
 
 end
