@@ -53,4 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get '/add',       to: 'pages#new'
+  get '*path/add',  to: 'pages#new'
+  get '*path/edit', to: 'pages#edit'
+  get '*path',      to: 'pages#show'
+
+  post '/add',      to: 'pages#create'
+  post '*path/add', to: 'pages#create'
 end
