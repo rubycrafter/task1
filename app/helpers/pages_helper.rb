@@ -18,4 +18,13 @@ def show_tree(page)
   return tree.html_safe
 end
 
+def show_content(page)
+  html_code = page.content
+  html_code.gsub!(/\*\*(?<bold>.*)\*\*/, '<b>\k<bold></b>')
+  html_code.gsub!(/\\\\(?<ital>.*)\\\\/, '<i>\k<ital></i>')
+  html_code.gsub!(/\(\((?<link>.*) (?<name>.*)\)\)/, '<a href="/\k<link>">\k<name></a>') 
+
+  return html_code.html_safe
+end
+
 end

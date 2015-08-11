@@ -15,7 +15,8 @@ end
 
 def create
   @page = Page.new(page_params)
-  @page.suprapage = Page.find_by name: parse_page_name(params[:path]).last
+  # @page.suprapage = Page.find_by name: parse_page_name(params[:path]).last
+  @page.suprapage = find_page_by_full_path(params[:path])
   @page.suprapage ||= Page.first
   # Here should be root page existance validation by exception
   if @page.save
@@ -89,6 +90,7 @@ def init_tree
   Page.delete_all
   @root = Page.new(name: "")
   @root.save(validate: false)
+  # Yes, it works by ignoring validations =)
 end
 
 
